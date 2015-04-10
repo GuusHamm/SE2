@@ -25,7 +25,7 @@ namespace AnimalShelter
             
         }
 
-        public void AddDummyAnimal()
+        public void AddDummyAnimals()
         {
             AddAnimal(new Cat("00001", new SimpleDate(02, 12, 1996), "Guus", "Verveling", true, "Male"));
             AddAnimal(new Cat("00002", new SimpleDate(06, 10, 1995), "Robin", "Grammar Nazi", false, "Female"));

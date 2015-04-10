@@ -14,6 +14,12 @@ namespace AnimalShelter
 {
     public partial class AdministrationForm : Form
     {
+        public class InvalidAnimalException : Exception
+        {
+            public InvalidAnimalException() { }
+
+            public InvalidAnimalException(string message) {}
+        }
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
@@ -30,6 +36,7 @@ namespace AnimalShelter
             administration.AnimalAdded += AddAnimalToList;
             administration.AnimalRemoved += RemoveAnimalFromList;
             administration.AllAnimalsRemoved += RemoveAnimalFromList;
+            administration.AddDummyAnimals();
 
 
         }
@@ -197,17 +204,21 @@ namespace AnimalShelter
             {
                 chip = chip.Substring(0, chipRegistrationNumberMaxLength);
             }
-
+            bool DierVerwijderd = false;
             foreach (Animal animal in administration.Animals)
             {
                 if (animal.ChipRegistrationNumber == chip)
                 {
                     administration.RemoveAnimal(animal);
                     MessageBox.Show(animal.Name + " is succesvol verwijderd");
+                    DierVerwijderd = true;
                     break;
                 }
             }
-
+            if (DierVerwijderd == false)
+            {
+                throw new InvalidAnimalException(tbChip.Text);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
