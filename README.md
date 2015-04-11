@@ -1,4 +1,2 @@
 # SE2
-SE2 opdrachten met robin
-
-Opdrachten van SE2
+SE2 opdrachten naar peach model, klaar om ingeleverd te worden
